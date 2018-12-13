@@ -1,0 +1,24 @@
+<table class="table table-striped">
+<tr>
+  <th>URL</th>
+  <th>Project</th>
+  <th>Mime-Type</th>
+  <th>Compiled Mime-Type</th>
+  <th colspan="2"></th>
+</tr>
+
+<% @artifacts.each do |artifact| %>
+  <tr>
+    <td><%= artifact.url %></td>
+    <td><%= artifact.project.name %></td>
+    <td><%= artifact.mimetype %></td>
+    <td><%= artifact.compiled_mimetype %></td>
+    <td><%= link_to 'Show', artifact_path(artifact) %></td>
+    <td><%= link_to 'Edit', edit_artifact_path(artifact) %></td>
+  </tr>
+<% end %>
+</table>
+
+<div>
+  <%= link_to 'Add', new_artifact_path, class: 'btn btn-primary' %>
+</div>

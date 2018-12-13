@@ -1,0 +1,41 @@
+<p>
+<strong>Name:</strong>
+<%= @project.name %>
+</p>
+
+<p>
+<strong>User:</strong>
+<%= @project.user.email %>
+</p>
+
+<p>
+<strong>Path:</strong>
+<%= @project.path %>
+</p>
+
+<table class="table table-striped">
+<tr>
+  <th>URL</th>
+  <th>Project</th>
+  <th>Mime-Type</th>
+  <th>Compiled Mime-Type</th>
+  <th colspan="2"></th>
+</tr>
+
+<% @project.artifacts.each do |artifact| %>
+  <tr>
+    <td><%= artifact.url %></td>
+    <td><%= artifact.project.name %></td>
+    <td><%= artifact.mimetype %></td>
+    <td><%= artifact.compiled_mimetype %></td>
+    <td><%= link_to 'Show', artifact_path(artifact) %></td>
+    <td><%= link_to 'Edit', edit_artifact_path(artifact) %></td>
+  </tr>
+<% end %>
+</table>
+
+<div>
+    <%= link_to "Add Artifact", new_artifact_path(project_id: @project), class: "btn btn-primary" %>
+</div>
+
+<%= link_to 'Back', projects_path %>

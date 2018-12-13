@@ -1,0 +1,55 @@
+<%= form_with model: @artifact, local: true do |form| %>
+    <% if @artifact.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@artifact.errors.count, "error") %> prohibited
+        this artifact from being saved:
+      </h2>
+      <ul>
+        <% @artifact.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+    <% end %>
+
+    <%= form.hidden_field :project_id %>
+
+    <div class="form-group">
+      <%= form.label :url %><br>
+      <%= form.text_field :url, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :mimetype %><br>
+      <%= form.select :mimetype, [["SCSS", "text/x-scss"]], {}, { class: "custom-select" } %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :source %><br>
+      <%= form.text_area :source, id: :source, style: "display: none" %>
+      <div id="editor" class="editor" style="height: 400px; width: 100%"><%= @artifact.source %></div>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :compiled_mimetype %><br>
+      <%= form.select :compiled_mimetype, [["CSS", "text/css"]], {}, { class: "custom-select" } %>
+    </div>
+
+    <div class="form-group">
+      <%= form.submit class: "btn btn-primary" %>
+    </div>
+<% end %>
+
+<script type="text/javascript">
+  document.addEventListener("turbolinks:load", function() {
+    var editor = ace.edit("editor");
+    var source = window.document.getElementById("source");
+    editor.setTheme("ace/theme/github");
+    editor.session.setMode("ace/mode/scss");
+    editor.setOptions({ fontSize: "12pt" });
+    editor.getSession().on("change", function() {
+      source.value = editor.getSession().getValue();
+    });
+  });
+</script>

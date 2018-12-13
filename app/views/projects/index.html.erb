@@ -1,0 +1,22 @@
+<table class="table table-striped">
+<tr>
+  <th>Name</th>
+  <th>User</th>
+  <th>Path</th>
+  <th colspan="2"></th>
+</tr>
+
+<% @projects.each do |project| %>
+  <tr>
+    <td><%= project.name %></td>
+    <td><%= project.user.email %></td>
+    <td><%= project.path %></td>
+    <td><%= link_to 'Show', project_path(project) %></td>
+    <td><%= link_to 'Edit', edit_project_path(project) %></td>
+  </tr>
+<% end %>
+</table>
+
+<div>
+  <%= link_to 'Add', new_project_path, class: 'btn btn-primary' %>
+</div>
