@@ -1,35 +1,31 @@
-<p>
-<strong>URL:</strong>
-<%= @artifact.url %>
-</p>
+<h2><%= @artifact.url %></h2>
 
 <div class="row">
-<div class="col-md-6 col-sm-12">
-<p>
-<strong>MimeType:</strong>
-<%= @artifact.mimetype %>
-</p>
+    <div class="col-md-6 col-sm-12">
+        <div class="card">
+            <div class="card-header"><h4><%= @artifact.mimetype %></h4></div>
+            <div class="card-body">
 
-<p>
-<pre>
-<%= @artifact.source %>
-</pre>
-</p>
+                <p>
+                    <pre><%= @artifact.source %></pre>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6 col-sm-12">
+        <div class="card">
+            <div class="card-header"><h4><%= @artifact.compiled_mimetype %></h4></div>
+            <div class="card-body">
+                <p>
+                    <pre><%= @artifact.compiled %></pre>
+                </p>
+            </div>
+        </div>
+    </div>
 </div>
 
-<div class="col-md-6 col-sm-12">
-<p>
-<p>
-<strong>Compiled MimeType:</strong>
-<%= @artifact.compiled_mimetype %>
-</p>
-
-<p>
-<pre>
-<%= @artifact.compiled %>
-</pre>
-</p>
-</div>
-</div>
-
+<%= link_to 'Edit', edit_artifact_path(@artifact) %>
 <%= link_to 'Back', artifacts_path %>
+
+</div>

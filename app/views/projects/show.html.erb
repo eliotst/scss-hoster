@@ -1,41 +1,54 @@
-<p>
-<strong>Name:</strong>
-<%= @project.name %>
-</p>
+<div class="row">
+<div class="col-12">
+<div class="card mb-5">
+  <div class="card-body">
+    <h2 class="card-title"><%= @project.name %></h2>
+    <p>
+      <strong>User:</strong>
+      <%= @project.user.email %>
+    </p>
 
-<p>
-<strong>User:</strong>
-<%= @project.user.email %>
-</p>
-
-<p>
-<strong>Path:</strong>
-<%= @project.path %>
-</p>
-
-<table class="table table-striped">
-<tr>
-  <th>URL</th>
-  <th>Project</th>
-  <th>Mime-Type</th>
-  <th>Compiled Mime-Type</th>
-  <th colspan="2"></th>
-</tr>
-
-<% @project.artifacts.each do |artifact| %>
-  <tr>
-    <td><%= artifact.url %></td>
-    <td><%= artifact.project.name %></td>
-    <td><%= artifact.mimetype %></td>
-    <td><%= artifact.compiled_mimetype %></td>
-    <td><%= link_to 'Show', artifact_path(artifact) %></td>
-    <td><%= link_to 'Edit', edit_artifact_path(artifact) %></td>
-  </tr>
-<% end %>
-</table>
-
-<div>
-    <%= link_to "Add Artifact", new_artifact_path(project_id: @project), class: "btn btn-primary" %>
+    <p>
+      <strong>Path:</strong>
+      <%= @project.path %>
+    </p>
+  </div>
+</div>
+</div>
 </div>
 
+<div class="row">
+<div class="col-12">
+<div class="card mb-1">
+  <table class="table table-striped">
+    <tr>
+      <th>URL</th>
+      <th>Project</th>
+      <th>Mime-Type</th>
+      <th>Compiled Mime-Type</th>
+      <th colspan="2"></th>
+    </tr>
+
+  <% @project.artifacts.each do |artifact| %>
+    <tr>
+      <td><%= artifact.url %></td>
+      <td><%= artifact.project.name %></td>
+      <td><%= artifact.mimetype %></td>
+      <td><%= artifact.compiled_mimetype %></td>
+      <td><%= link_to 'Show', artifact_path(artifact) %></td>
+      <td><%= link_to 'Edit', edit_artifact_path(artifact) %></td>
+    </tr>
+  <% end %>
+  </table>
+
+  <div class="card-footer text-center">
+    <div class="btn-group">
+        <%= link_to "Add Artifact", new_artifact_path(project_id: @project), class: "btn btn-primary" %>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+
+<%= link_to 'Edit', edit_project_path(@project) %>
 <%= link_to 'Back', projects_path %>

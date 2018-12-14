@@ -1,10 +1,5 @@
 # TODO
 
-1. Rename project.
-2. Add to github
-3. more styling
- a. devise pages
- b. show pages
 4. Switch to PostGRES.
 5. deploy to heroku
 6. Test on lancasterstandsup.org
