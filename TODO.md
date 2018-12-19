@@ -1,6 +1,5 @@
 # TODO
 
-4. Switch to PostGRES.
 5. deploy to heroku
 6. Test on lancasterstandsup.org
 7. support more flexible project pathing (not just /one)
